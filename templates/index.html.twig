@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}{% endblock%}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+{% endblock%}
+
+{% block body %}
+
+    <section id="introduction">
+        <p>Trouver un médecin le plus proche de toi.</p>
+        <p>Consulter la liste de nos médecins facilement.</p>
+    </section>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script>
+        $(document).ready(function (){
+            $('#agences .owl-carousel').owlCarousel({
+                loop:true,
+                margin: 30,
+                responsiveClass:true,
+                responsive:{
+                    0:{
+                        items:1,
+                        nav:true
+                    },
+                    600:{
+                        items:2,
+                        nav:true
+                    },
+                    1000:{
+                        items:2,
+                        nav:true,
+                    }
+                },
+                navText : ['<p>< next</p>','<p>prev ></p>']
+            });
+        });
+    </script>
+
+{% endblock %}

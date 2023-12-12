@@ -1,0 +1,85 @@
+/* Section introduction */
+
+#introduction
+{
+    height: 400px;
+    padding-top: 80px;
+    padding-left: 30px;
+    background-image: url("/img/brand.jpg");
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+
+#introduction p
+{
+    color: #FFF;
+    font-size: 20px;
+}
+
+/* end section introduction */
+
+/* agence et location section */
+
+#agence-container, #location-container
+{
+    padding-top: 30px;
+    padding-left: 30px;
+}
+
+.agence-title, .location-title
+{
+    padding: 0px;
+    padding-bottom: 30px;
+}
+
+.agence-info-link, .location-info-link
+{
+    text-decoration: none;
+    color: #338AFF;
+    font-size: 18px;
+}
+
+#agences .owl-next p, #agences .owl-prev p, #locations .owl-next p, #locations .owl-prev p
+{
+    font-size: 18px;
+    color: #338AFF;
+}
+
+#agences .owl-next, #locations .owl-next
+{
+    float: right;
+}
+
+#locations .list-group-item, #agences .list-group-item
+{
+    width: 50%;
+    padding-left: 30px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#locations .list-group-item-image, #agences .list-group-item-image
+{
+    width: 45%;
+    display: inline-block;
+    padding-top: 10px;
+    vertical-align: top;
+}
+
+#locations .list-group-item-image img, #agences .list-group-item-image img
+{
+    height: 100%;
+}
+
+#agences .list-group-horizontal, #locations .list-group-horizontal
+{
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+#locations .price
+{
+    color: red;
+}
+
+/* end agence et location section */

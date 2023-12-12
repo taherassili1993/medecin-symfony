@@ -1,0 +1,77 @@
+<style>
+.navbar
+{
+  background-color: #338AFF !important;
+}
+
+.nav-item a, .navbar-brand
+{
+  color: #fff;
+}
+
+.nav-item a:hover, .navbar-brand:hover
+{
+  color: red !important;
+}
+
+.nav-item, nav form
+{
+  padding-top: 2px;
+}
+
+nav form input:focus
+{
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+</style>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Taher ASSILI</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Les Médecins</a>
+        </li>
+
+        {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Modifier profil</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{  app.user.name }}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="nav-link" href="/logout" style="color: #000 !important;">Se deconnecter</a></li>
+          </ul>
+        </li>
+
+        {% else %}
+
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Se connecter</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/register">S'inscrire</a>
+        </li>
+
+        {% endif %}
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Trouver un emploi..." aria-label="Search">
+        <button class="btn btn-danger" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
