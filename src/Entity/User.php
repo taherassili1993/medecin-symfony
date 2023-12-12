@@ -44,6 +44,95 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $name;
 
+    /**
+     * @var string specialite
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $specialite;
+
+    /**
+     * @var string telephone
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $telephone;
+
+    /**
+     * @var string addresse
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $addresse;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string image
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $image;
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $name): self
+    {
+        $this->image = $name;
+
+        return $this;
+    }
+
+    public function getAddresse(): ?string
+    {
+        return $this->addresse;
+    }
+
+    public function setAddresse(string $name): self
+    {
+        $this->addresse = $name;
+
+        return $this;
+    }
+
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(string $name): self
+    {
+        $this->telephone = $name;
+
+        return $this;
+    }
+
+    public function getSpecialite(): ?string
+    {
+        return $this->specialite;
+    }
+
+    public function setSpecialite(string $name): self
+    {
+        $this->specialite = $name;
+
+        return $this;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

@@ -44,7 +44,7 @@ nav form input:focus
         {% if is_granted("IS_AUTHENTICATED_FULLY") %}
 
         <li class="nav-item">
-          <a class="nav-link" href="#">Modifier profil</a>
+          <a class="nav-link" href="{{ path('modifier-profil') }}">Modifier profil</a>
         </li>
 
         <li class="nav-item dropdown">

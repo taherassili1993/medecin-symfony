@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}{% endblock%}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock%}
+
+{% block body %}
+
+    <style>
+    #modifier-profil
+    {
+        margin-top: 100px;
+        margin-bottom: 150px;
+
+    }
+
+    h1.titre
+    {
+        font-size: 24px;
+        color: #338AFF;
+        margin-bottom: 20px;
+
+    }
+
+    #modifier-profil form input, #modifier-profil form textarea
+    {
+        width: 500px;
+        height: 50px;
+        padding-left: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        margin-bottom: 30px;
+
+    }
+
+    #modifier-profil form textarea
+    {
+        height: 400px;
+        padding-top: 20px;
+    }
+
+    #modifier-profil form input:focus, #modifier-profil form textarea:focus
+    {
+        outline: none;
+        box-shadow: none;
+        border: 1px solid #999;
+    }
+    </style>
+
+    <section id="modifier-profil">
+        <div class='container'>
+            <div class='row'>
+                <div class='col-md-3'></div>
+                <div class='col-md-6'>
+                    <h1 class='titre'>Modifer votre profil</h1>
+                    <form method='POST' action='' enctype="multipart/form-data">
+                        <div class='form-div'>
+                            <input name='name' placeholder='Nom' value="{{ user.getName() }}" required />
+                        </div>
+
+                        <div class='form-div'>
+                            <input name='specialite' placeholder='Spécialité' value="{{ user.getSpecialite() }}" required />
+                        </div>
+
+                        <div class='form-div'>
+                            <input name='telephone' placeholder='Téléphone' value="{{ user.getTelephone() }}" required />
+                        </div>
+
+                        <div class='form-div'>
+                            <input name='addresse' placeholder='Addresse de cabinet' value="{{ user.getAddresse() }}" required />
+                        </div>
+
+                        <div class='form-div'>
+                            <textarea name='description' placeholder="Description" required>{{ user.getDescription() }}</textarea>
+                        </div>
+
+                        <div class='form-div'>
+                            <input type="file" name="image">
+                        </div>
+
+                        <div class='form-div'>
+                            <button type='submit' class='btn btn-primary btn-sm'>Enregistrer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block javascripts %}{% endblock %}
