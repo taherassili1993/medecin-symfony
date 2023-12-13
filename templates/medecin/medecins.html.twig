@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}{% endblock%}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock%}
+
+{% block body %}
+<style>
+#medecins-section
+{
+    margin-top: 100px;
+    margin-bottom: 150px;
+}
+
+.medecin
+{
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ccc;
+}
+
+.medecin .image, .medecin .content
+{
+    display: inline-block;
+}
+
+.medecin .content
+{
+    padding-top: 3px;
+    padding-left: 20px;
+}
+
+.medecin img
+{
+    height: 200px;
+    width: 300px;
+}
+
+.medecin a
+{
+    text-decoration: none;
+    color: #999;
+    font-size: 22px;
+}
+
+.medecin a:hover
+{
+    color: red;
+}
+
+.medecin p
+{
+    margin-bottom: 1px;
+}
+</style>
+
+    <section id="medecins-section">
+        <div class='container'>
+            <div class='row'>
+                {% for medecin in medecins %}
+                <div class='col-md-2'></div>
+                <div class='col-md-8'>
+                    <div class='medecin'>
+                        <div class='image'>
+                            {% if medecin.getImage() %}
+                            <a href='#'><img src="{{ asset('img/medecin/'~ medecin.getImage()) }}" alt=""></a>
+                            {% else %}
+                            <a href='#'><img src="img/profil.jpg" alt="..."></a>
+                            {% endif %}
+                        </div>
+
+                        <div class='content'>
+                            <h1><a href='#'>{{ medecin.getName() }}</a></h1>
+                            <p>{{ medecin.getSpecialite() }}</p>
+                            <p>{{ medecin.getAddresse }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-md-2'></div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

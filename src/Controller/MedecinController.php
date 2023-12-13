@@ -64,4 +64,19 @@ class MedecinController extends AbstractController
     }
 
 
+    /**
+     *
+     * @Route("/medecins", name="list-medecin")
+     */
+    public function medecins(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $medecinRepository = $this->getDoctrine()->getRepository(User::class);
+
+        $medecins = $medecinRepository->findAll();
+
+        return $this->render('medecin/medecins.html.twig', ['medecins' => $medecins]);
+    }
+
+
 }
