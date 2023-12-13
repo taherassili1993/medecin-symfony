@@ -57,7 +57,7 @@ class MedecinController extends AbstractController
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('medecin', ['id' => $user->getId()]);
         }
 
         return $this->render('medecin/modifier_profil.html.twig', ['user' => $user]);
@@ -76,6 +76,25 @@ class MedecinController extends AbstractController
         $medecins = $medecinRepository->findAll();
 
         return $this->render('medecin/medecins.html.twig', ['medecins' => $medecins]);
+    }
+
+     /**
+     *
+     * @Route("/medecins/{id}", name="medecin")
+     */
+    public function emploi(Request $request, $id = 0)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $medecinRepository = $this->getDoctrine()->getRepository(User::class);
+
+        $medecin = $medecinRepository->findOneById($id);
+
+        if(! $medecin)
+        {
+            return $this->redirectToRoute('list-medecin');
+        }
+
+        return $this->render('medecin/medecin.html.twig', ['medecin' => $medecin]);
     }
 
 

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}{% endblock%}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock%}
+
+{% block body %}
+    
+    <style>
+        #medecins
+        {
+            margin-top: 100px;
+            margin-bottom: 150px;
+        }
+
+        .single-medecin
+        {
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .image img
+        {
+            width: 250px;
+            height: 200px;
+        }
+
+        #medecins h1
+        {
+            font-size: 22px;
+            color: red;
+            margin-top: 20px;
+        }
+    </style>
+
+    <section id="medecins">
+        <div class='container'>
+            <div class='row'>
+                <div class='col-md-3'>
+                    <div class='image'>
+                        {% if medecin.getImage() %}
+                        <img src="{{ asset('img/medecin/'~ medecin.getImage()) }}" alt="">
+                        {% else %}
+                        <img src="{{ asset('img/profil.jpg') }}" alt="...">
+                        {% endif %}
+                    </div>
+                    <h1>{{ medecin.getName() }}</h1>
+                    <p>Spécialité: {{ medecin.getSpecialite() }}</p>
+                    <p>Téléphone: {{ medecin.getTelephone() }}</p>
+                    <p>Addresse: {{ medecin.getAddresse() }}</p>
+                </div>
+
+                <div class='col-md-1'></div>
+
+                <div class='col-md-6'>
+                    <div class='single-medecin'>
+                        <p>{{ medecin.getDescription() }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block javascripts %}{% endblock %}
