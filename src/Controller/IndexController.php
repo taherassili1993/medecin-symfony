@@ -1,6 +1,8 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\User;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,16 +21,19 @@ class IndexController extends AbstractController
     }
 
     /**
-     * @Route("/api/change-language", name="app_language_api", methods={"POST"})
+     *
+     * @Route("/recherche", name="recherche-medecin")
      */
-    public function register_api(Request $request): Response
+    public function medecins(Request $request)
     {
-        $language = $request->get('language', 'fr');
-        $this->get('session')->set('language', $language);
-        $response = new Response( json_encode( ['success' => true] ) );
-        $response->headers->set( 'Content-Type', 'application/json' );
+        $q = $request->query->get('q', '');
 
-        return $response;
+        $em = $this->getDoctrine()->getManager();
+        $medecinRepository = $this->getDoctrine()->getRepository(User::class);
+
+        $medecins = $medecinRepository->search(0, 10, $q);
+
+        return $this->render('medecin/medecins.html.twig', ['medecins' => $medecins]);
     }
 
 }

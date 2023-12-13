@@ -68,8 +68,8 @@ nav form input:focus
 
         {% endif %}
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Trouver un medecin..." aria-label="Search">
+      <form method='GET' action="{{ path('recherche-medecin') }}" class="d-flex" role="search">
+        <input name='q' class="form-control me-2" type="search" placeholder="Trouver un medecin..." aria-label="Search" required>
         <button class="btn btn-danger" type="submit">Search</button>
       </form>
     </div>
